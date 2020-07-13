@@ -1,0 +1,76 @@
+<div class="wrapper">
+
+  <div class="pageHeader">
+    <div class="class1">
+      <p >Exam Page</p>
+    </div>
+    <div class="timer">
+      <p class="digitalFont">{{minutes}} <small>m</small> : {{seconds}} <small>s</small></p>
+    </div>
+  </div>
+
+
+  <form [formGroup]="form">
+
+    <div class="head">
+
+      <div class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput type="email" formControlName="email" placeholder="e-mail"
+          [class.error]="form.get('email').touched && form.get('email').invalid">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" formControlName="phone" placeholder="phone"
+          [class.error]="form.get('phone').touched && form.get('phone').invalid">
+        </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="start()" [disabled] = "startButtonToggle" [disabled]="!form.valid">Start</button>
+          &nbsp;
+          <button mat-stroked-button color="primary" class="testAgainButton" (click)="testAgain()">Run Test Again</button>
+      </div>
+
+      <div class="metaData">
+        <!-- <p *ngIf="testToggle">{{form.get('email').value}}</p>
+        <p *ngIf="testToggle">{{form.get('phone').value}}</p> -->
+      </div>
+
+    </div>
+
+
+    <div class="test" *ngIf="testToggle">
+        <mat-divider></mat-divider>
+      <div *ngFor = "let item of questions; let i = index" #test>
+        <p>{{item.question}}</p>
+
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button class="radioContent" [name]="i" [value]="item.answers[0]" (change)="check($event, item.rightAnswer, i, item.question, 0, item._id)" [disabled] = resultToggle>{{item.answers[0]}}</mat-radio-button>
+          <br><br>
+          <mat-radio-button class="radioContent" [name]="i" [value]="item.answers[1]" (change)="check($event, item.rightAnswer, i, item.question, 1, item._id)" [disabled] = resultToggle>{{item.answers[1]}}</mat-radio-button>
+          <br><br>
+          <mat-radio-button class="radioContent" [name]="i" [value]="item.answers[2]" (change)="check($event, item.rightAnswer, i, item.question, 2, item._id)" [disabled] = resultToggle>{{item.answers[2]}}</mat-radio-button>
+        </mat-radio-group>
+
+        <br>
+        <br>
+        <mat-divider></mat-divider>
+      </div>
+        <br>
+        <button mat-stroked-button color="primary" (click)="finish()" [disabled] = "resultToggle" >Finish</button>
+    </div>
+
+    <!-- <div class="result" *ngIf=resultToggle>
+          <h2 style="text-align: center; color: rgb(97, 102, 129);">Test Result</h2>
+          <hr style="height: 2px; background-color: rgb(197, 197, 197);">
+        <div  *ngFor="let r of res">
+          <p>Question: {{r.question}}</p>
+          <p><i>Your answer is:  {{r.answer}}</i></p>
+          <p><i>{{r.rightAnswer}}</i></p>
+          <mat-divider></mat-divider>
+        </div>
+          <p style="color: rgb(67, 62, 110); text-align: center;" >Number of right answers is : {{ansCount}}</p>
+    </div> -->
+
+  </form>
+
+</div>

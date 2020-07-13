@@ -1,0 +1,49 @@
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.main{
+  background-color: white;
+}
+.menu{
+  width: 120px;
+  text-align: center;
+}
+.menu a{
+  text-decoration: none;
+}
+.menu h3{
+  color: rgb(88, 85, 109);
+}
+.spacer{
+  flex: 1 1 auto;
+}
+.menuButton{
+  display: none;
+}
+.logoutButton{
+  display: block;
+}
+.sideMenuHeader{
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  color: rgb(58, 68, 112)
+}
+.sildeMenuList{
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(58, 68, 112);
+}
+
+@media (max-width: 768px) {
+  .menuButton{
+    display: block;
+  }
+  .logoutButton{
+    display: none;
+  }
+}

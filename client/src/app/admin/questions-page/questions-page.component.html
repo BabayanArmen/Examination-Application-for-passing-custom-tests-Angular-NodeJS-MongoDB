@@ -1,0 +1,21 @@
+<button mat-stroked-button color="primary" (click)="openDialogADD()">Add Question</button>
+<mat-divider></mat-divider>
+
+<div class="questionsList" *ngFor="let item of questions | paginate: { itemsPerPage: 3, currentPage: p }">
+
+  <mat-list role="list">
+    <mat-list-item>{{questions.indexOf(item)+1}}</mat-list-item>
+    <mat-list-item role="listitem"><p>Question : <i>&nbsp;{{item.question}}</i></p></mat-list-item>
+    <mat-list-item role="listitem" *ngFor="let ans of item.answers; let i=index"><p>Answer {{i+1}}  :<i>&nbsp;{{ans}}</i></p></mat-list-item>
+    <mat-list-item role="listitem"><p>Right Answer is Answer {{item.rightAnswer+1}}</p></mat-list-item>
+    <mat-list-item role="listitem"><p>Category :<i>&nbsp;{{item.category}}</i></p></mat-list-item>
+  </mat-list>
+
+    <button mat-stroked-button color="primary" (click)="onDelete(questions.indexOf(item))">Delete</button>
+    <button mat-stroked-button color="primary" (click)="openDialogUPDATE(item, questions.indexOf(item))">Update</button>
+
+    <mat-divider></mat-divider>
+
+</div>
+
+<pagination-controls class="myPagination" (pageChange)="p = $event"></pagination-controls>

@@ -1,0 +1,36 @@
+<mat-sidenav-container class="container">
+  <!-- for right side menu add position="end" atribute -->
+  <!-- <mat-sidenav mode="over" class="menu" #sidenav position="end"> -->
+  <mat-sidenav mode="over" class="menu" #sidenav >
+
+    <mat-list role="list">
+      <mat-list-item role="listitem"><p class="sideMenuHeader">Menu</p></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item mat-button><a class="sildeMenuList" routerLink="/login" (click)="sidenav.toggle(); hideWelcome()">Login</a></mat-list-item>
+      <mat-list-item mat-button><a class="sildeMenuList" routerLink="/register" (click)="sidenav.toggle(); hideWelcome()">SingUp</a></mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+    </mat-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main">
+
+    <mat-toolbar color="primary">
+      <button class="menuButton" mat-flat-button color="primary" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+      <span class="spacer"></span>
+      <a mat-button class="loginButton" routerLink="/login" (click)="hideWelcome()"><mat-icon>login</mat-icon>Login</a>
+      <a mat-button class="singupButton" routerLink="/register" (click)="hideWelcome()"><mat-icon>person</mat-icon> SignUp</a>
+      <!-- this is for right side menu  -->
+      <!-- <span class="spacer"></span>
+      <button class="menuButton" mat-flat-button color="primary" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button> -->
+    </mat-toolbar>
+
+    <!-- All content here -->
+    <!-- <h2 style="text-align:center; color: rgb(58, 68, 112);" *ngIf="hideToggle">Free Education</h2> -->
+    <router-outlet></router-outlet>
+    <!-- //////////////// -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

@@ -1,0 +1,166 @@
+<div class="wrapper">
+
+    <div class="container">
+<!-- ////////////////////// Category ///////////////////// -->
+      <div class="category">
+        <mat-card>
+          <div class="height50">
+            <mat-form-field class="example-full-width">
+              <input matInput [formControl]="category" placeholder="Category">
+            </mat-form-field>
+          </div>
+            <br>
+          <div class="dropdown height50">
+            <!-- <button mat-raised-button (click)="dropDownToggle1 = !dropDownToggle1" class="width100">Caregories</button>
+            <div class="dropdown-content" *ngIf="dropDownToggle1">
+
+              <mat-radio-group *ngIf="!noCategoryToggle" aria-label="Select an option" [formControl]="removeCategory">
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let item of categories; let i = index">
+                      <mat-radio-button [name]="i" [value]="item.category" class="example-radio-button"  class="example-margin">{{item.category}}</mat-radio-button>
+                  </mat-list-item>
+                </mat-list>
+              </mat-radio-group>
+
+              <div *ngIf="noCategoryToggle">
+                <p style="text-align: center;">No Category</p>
+              </div>
+
+            </div> -->
+          </div>
+
+          <!-- <br> -->
+
+          <div class="button">
+            <button mat-raised-button color="primary" (click)="onNewCategory()" [disabled]="this.category.invalid">Add Category</button>
+            &nbsp;
+            <!-- <button mat-raised-button color="primary" (click)="onRemoveCategory()" [disabled]="this.removeCategory.invalid">Remove Category</button>           -->
+          </div>
+       </mat-card>
+      </div>
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////// Number of questions  ///////////////////// -->
+      <!-- <div class="number">
+        <mat-card>
+          <div class="height50">
+            <mat-form-field class="example-full-width">
+              <input matInput [formControl]="numOfQuestions" placeholder="Number Of Questions" type="number">
+            </mat-form-field>
+          </div>
+            <br>
+          <div class="dropdown height50">
+            <button mat-raised-button (click)="dropDownToggle2 = !dropDownToggle2" class="width100">Choose Caregory</button>
+            <div class="dropdown-content" *ngIf="dropDownToggle2">
+
+              <mat-radio-group *ngIf="!noCategoryToggle" aria-label="Select an option" [formControl]="choosenCategory">
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let item of categories; let i = index">
+                      <mat-radio-button [name]="i" [value]="item.category" class="example-radio-button"  class="example-margin">{{item.category}}</mat-radio-button>
+                      <span>{{item.numOfQuestions}}</span>
+                  </mat-list-item>
+                </mat-list>
+              </mat-radio-group>
+
+              <div *ngIf="noCategoryToggle">
+                <p style="text-align: center;">No Category</p>
+              </div>
+
+            </div>
+          </div>
+          <div class="button">
+            <button mat-raised-button color="primary" (click)="onNumOfCat()" [disabled]="this.numOfQuestions.invalid || this.choosenCategory.invalid">Add Num</button>
+          </div>
+        </mat-card>
+      </div> -->
+<!-- /////////////////////////////////////////////// -->
+<!-- ////////////// Timer ////////////////////////// -->
+      <div class="timer">
+        <mat-card>
+          <div class="height50">
+            <mat-form-field class="example-full-width">
+              <input matInput [formControl]="minutes" placeholder="minutes" type="number">
+            </mat-form-field>
+          </div>
+          <div class="height50">
+            <mat-form-field class="example-full-width">
+              <input matInput [formControl]="seconds" placeholder="seconds" type="number">
+            </mat-form-field>
+          </div>
+            <br>
+          <div class="button">
+            <button mat-raised-button color="primary" (click)="onTimerTime()" [disabled]="this.minutes.invalid || this.seconds.invalid">Add Time</button>
+            &nbsp;
+            <span *ngIf="timerTimeToggle">{{timerTime.minutes}} m : {{timerTime.seconds}} s</span>
+          </div>
+        </mat-card>
+      </div>
+<!-- ////////////////////////////////////////////////// -->
+    </div>
+
+    <div class="page">
+
+      <mat-form-field class="searchInput">
+        <input matInput placeholder="Search" (keyup)="applyFilter($event)">
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="float: right; padding: 0px; margin-top: 10px;" (click)="onReset()">Reset</button>
+    </div>
+
+<!-- //////////////////////// Data Tabel //////////////////////////-->
+  <div class="data-tabel">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <!-- category Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <!-- numOfQuestions Column -->
+      <ng-container matColumnDef="numOfQuestions">
+        <th mat-header-cell *matHeaderCellDef> Number of questions </th>
+        <td mat-cell *matCellDef="let element"> {{element.numOfQuestions}} </td>
+      </ng-container>
+
+      <!-- numOfQuestionsInTest Column -->
+      <ng-container matColumnDef="numOfQuestionsInTest">
+        <th mat-header-cell *matHeaderCellDef> Number of questions in test </th>
+        <td mat-cell *matCellDef="let element"> {{element.numOfQuestionsInTest}} </td>
+      </ng-container>
+
+      <!-- Add Num Column -->
+      <ng-container matColumnDef="addNum">
+        <th mat-header-cell *matHeaderCellDef> Add Num </th>
+        <td mat-cell *matCellDef="let element">
+
+          <mat-form-field class="tabelNumInput">
+            <input matInput [formControl]="numOfQuestions" placeholder="number" type="number">
+          </mat-form-field>
+          &nbsp;
+          <button mat-stroked-button color="primary" (click)="onNumOfCat2(element.category)">Add Num</button>
+
+        </td>
+      </ng-container>
+
+      <!-- Remove Column -->
+      <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef> Remove Category</th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="onRemoveCategoryFromTabel(element.category)">Remove</button> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </div>
+
+  <div class="footer"></div>
+
+</div>

@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <mat-card class="register">
+    <p>SignUp</p>
+
+      <div  [formGroup]="form" class="example-container">
+
+        <mat-form-field appearance="legacy" class=".email">
+          <mat-label>Enter your email</mat-label>
+          <input  matInput placeholder="pat@example.com"
+          formControlName="email"
+          required>
+          <mat-error *ngIf="form.touched && form.controls.email.errors?.required">Enter email</mat-error>
+          <mat-error *ngIf="form.touched && form.controls.email.errors?.email">Enter valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Enter your name</mat-label>
+          <input  matInput
+          formControlName="name"
+          required>
+          <mat-error *ngIf="form.touched && form.controls.name.errors">Enter name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Enter your password *</mat-label>
+          <input matInput [type]="hide1 ? 'password' : 'text'"
+          formControlName="password"
+          >
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.touched && form.controls.password.errors?.required">Enter password</mat-error>
+          <!-- <mat-error *ngIf="form.touched && form.controls.password.errors?.mustContain">Password must contain A</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label [class.red]="form.errors?.misMatch || form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.required">Confirm your password *</mat-label>
+          <input matInput [type]="hide2 ? 'password' : 'text'"
+          formControlName="confirmPassword"
+          >
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <!-- <mat-error *ngIf="form.errors?.misMatch">Confirm faled</mat-error> -->
+        </mat-form-field>
+          <span class="error" *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.required">Confirm Password</span>
+          <span class="error" *ngIf="form.errors?.misMatch">Confirm faled</span>
+
+        <br>
+        <br>
+
+        <button mat-raised-button color="primary" (click)="onRegister()" [disabled]="this.form.invalid">SignUp</button>
+      </div>
+
+  </mat-card>
+</div>

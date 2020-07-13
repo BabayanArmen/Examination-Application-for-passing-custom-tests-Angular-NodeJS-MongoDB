@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <mat-card class="login">
+    <p>Log In</p>
+
+      <div class="example-container">
+
+        <mat-form-field appearance="legacy" class=".email">
+          <mat-label>Enter your email</mat-label>
+          <input  matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.errors?.required">Email required</mat-error>
+          <mat-error *ngIf="email.errors?.email">Enter valid email</mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Enter your password *</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.errors?.required">Password required</mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button color="primary" (click)="onLogin()"  [disabled]="email.invalid || password.invalid">Login</button>
+        <br>
+        <a class="registerLink" routerLink="/register">Register</a>
+        <br>
+      </div>
+
+  </mat-card>
+</div>

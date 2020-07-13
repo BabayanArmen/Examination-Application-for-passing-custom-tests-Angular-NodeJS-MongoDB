@@ -1,0 +1,52 @@
+<form [formGroup]="form" (submit)="addQuiestion()" class="example-form">
+
+  <mat-dialog-content class="mat-typography">
+
+      <h2 mat-dialog-title>Add Question</h2>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="question" formControlName="question">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="answer #1" formControlName="answer1">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="answer #2" formControlName="answer2">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="answer #3" formControlName="answer3">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rigth Answer</mat-label>
+        <mat-select formControlName="rightAnswer">
+          <mat-option value=0>1</mat-option>
+          <mat-option value=1>2</mat-option>
+          <mat-option value=2>3</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let cat of categories" [value]="cat.category">{{cat.category}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit">Add Question</button>
+  </mat-dialog-actions>
+
+</form>

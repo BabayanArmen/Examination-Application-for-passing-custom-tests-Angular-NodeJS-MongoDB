@@ -1,0 +1,38 @@
+<mat-sidenav-container class="container">
+  <!-- for right side menu add position="end" atribute -->
+  <!-- <mat-sidenav mode="over" class="menu" #sidenav position="end"> -->
+  <mat-sidenav mode="over" class="menu" #sidenav >
+
+    <mat-list role="list">
+      <mat-list-item role="listitem"><p class="sideMenuHeader">Menu</p></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item mat-button (click)="sidenav.toggle()"><a class="sildeMenuList" routerLink="/home">Home</a></mat-list-item>
+      <mat-list-item mat-button (click)="sidenav.toggle()"><a class="sildeMenuList" routerLink="/result">Result</a></mat-list-item>
+      <mat-list-item mat-button (click)="sidenav.toggle()"><a class="sildeMenuList" routerLink="/exam">Exam</a></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item mat-button (click)="onLogout()"><a class="sildeMenuList">Logout</a></mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main">
+
+    <mat-toolbar color="primary">
+      <button class="menuButton" mat-flat-button color="primary" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+      <a mat-button class="logoutButton" routerLink="/home">Home</a>
+      <a mat-button class="logoutButton" routerLink="/result">Result</a>
+      <a mat-button class="logoutButton" routerLink="/exam">Exam</a>
+      <span class="spacer"></span>
+      <a mat-button class="logoutButton" (click)="onLogout()" ><mat-icon>logout</mat-icon>Logout</a>
+      <!-- this is for right side menu  -->
+      <!-- <span class="spacer"></span>
+      <button class="menuButton" mat-flat-button color="primary" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button> -->
+    </mat-toolbar>
+
+    <!-- All content here -->
+    <router-outlet></router-outlet>
+    <!-- //////////////// -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

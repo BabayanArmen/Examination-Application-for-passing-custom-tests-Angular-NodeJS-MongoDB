@@ -1,0 +1,130 @@
+.wrapper{
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgb(235, 235, 235);
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  // border: 1px solid violet;
+}
+/////////////////////////////////
+// .example-form {
+//   min-width: 150px;
+//   max-width: 500px;
+//   width: 100%;
+// }
+.example-full-width {
+  width: 100%;
+}
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.example-section {
+  margin: 12px 0;
+}
+.example-margin {
+  margin: 0 12px;
+}
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+  padding: 0px;
+}
+/////////////////////////////////
+.timer{
+  // border: 1px solid green;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+.category{
+  margin-right: 10px;
+  margin-bottom: 10px;
+  flex-grow: 4;
+}
+.number{
+  // border: 1px solid red;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  flex-grow: 4;
+}
+//////////////////////////////////////
+.input{
+  min-height: 55px;
+  // border: 1px solid rgb(238, 255, 0);
+}
+.button{
+  // border: 1px solid orangered;
+  min-height: 30px;
+}
+.example-radio-button {
+  margin: 5px;
+}
+.page{
+  // position: sticky;
+  padding-left: 10px;
+  // padding-top: 10px;
+  padding-right: 10px;
+  // padding-bottom: 10px;
+  // border: 1px solid green;
+  // height: 55px;
+}
+////////// dropdown /////////////
+.dropdown-content {
+  min-width: 100%;
+  position: absolute;
+  // background-color: #f1f1f1;
+  background-color: white;
+  // overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.width100{
+  width: 100%;
+}
+.height50{
+  height: 50px;
+}
+///////////////////////////////////
+@media screen and (max-width: 680px){
+  .number{
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 468px){
+  .category{
+    margin-right: 0px;
+  }
+}
+
+////////////////  Data Tabel /////////////
+.data-tabel{
+  // width: 98%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+}
+///////////////////////////////////////////
+///////////////// Footer //////////////////
+.footer{
+  height: 20px;
+  // background-color: thistle;
+}
+///////////////////////////////////////////
+.tabelNumInput {
+  width: 15%;
+}
+
+.searchInput{
+  width: 30%;
+  padding: 0px;
+}
